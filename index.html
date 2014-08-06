@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Web Components - Une révolution ?</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+    <a href="?#/themes">Default</a>
+    <a href="?theme=sky#/themes">Sky</a>
+    <a href="?theme=beige#/themes">Beige</a>
+    <a href="?theme=night#/themes">Night</a>
+    <a href="?theme=moon#/themes">Moon</a>
+    <a href="?theme=solarized#/themes">Solarized</a>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Web Components</h2>
+					<h3>Une révolution ?</h3>
+					<img class="noBorder" width="512" height="512" src="img/logo_512x512.png" alt="webcomponents logo">
+                    <p>
+						<small>Created by <a href="https://twitter.com/cbalit">Cyril Balit</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Pourquoi ?</h2>
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Encapsulation</li>
+                        <li class="fragment" data-fragment-index="2">Réutilisable</li>
+                        <li class="fragment" data-fragment-index="3">Parceque !!!</li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h2>C'est quoi ?</h2>
+                    <p class="fragment" data-fragment-index="0">
+                        Un mélange de spécifications
+                    <ul>
+                        <li class="fragment" data-fragment-index="1">Template</li>
+                        <li class="fragment" data-fragment-index="2">Html Import</li>
+                        <li class="fragment" data-fragment-index="3">Shadow Dom</li>
+                        <li class="fragment" data-fragment-index="4">Custom element</li>
+                    </ul>
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Template</h2>
+                        <img src="img/templates_256x256.png" alt="template logo">
+                    </section>
+                    <section>
+                        <h2>C'est quoi ?</h2>
+                        <pre>
+                            <code data-trim>
+                                <link rel="import" href="import-file.html">
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Html Import</h2>
+                        <img src="img/html-imports_256x256.png" alt="template logo">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Shadow Dom</h2>
+                        <img src="img/shadow-dom_256x256.png" alt="template logo">
+                    </section>
+                    <section>
+                        <h2>C'est quoi ?</h2>
+                        <pre><code data-trim>
+<button>Normal button!</button>
+<button id="myBtn">Hello, world!</button>
+<script>
+    var host = document.querySelector('#myBtn');
+    var root = host.createShadowRoot();
+    root.textContent = 'こんにちは、影の世界!';
+</script>
+                        </code></pre>
+                        <button>Normal button!</button>
+                        <button id="btn1">Hello, world!</button>
+                        <script>
+                            var host = document.querySelector('#btn1');
+                            var root = host.createShadowRoot();
+                            root.textContent = 'こんにちは、影の世界!';
+                        </script>
+                    </section>
+                    <section>
+                        <h2>Le contenu</h2>
+                        <pre><code data-trim>
+ <button>Normal button!</button>
+<p id="myDiv"><span>Hello, world!</span></p>
+<script>
+    var el = document.querySelector('#myDiv');
+    var shadow = el.createShadowRoot();
+    shadow.innerHTML = '<content select="h1"></content>';
+    document.body.appendChild(el);
+</script>
+                        </code></pre>
+                        <div id="div1"><span>Hello, world!</span></div>
+                        <script>
+                            var el = document.querySelector('#div1');
+                            var shadow = el.createShadowRoot();
+                            shadow.innerHTML = '<content select="h1"></content>';
+                            document.body.appendChild(el);
+                        </script>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Custom element</h2>
+                        <img src="img/custom-elements_256x256.png" alt="template logo">
+                    </section>
+                </section>
+
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable class="html">
+<element name="x-gangnam-style">
+    <p>Courtesy of <a href="#">highlight.js</a>jjj.</p>
+</element>
+					</code></pre>
+				</section>
+
+				<section>
+					<h1>Merci !!!</h1>
+					<h3>Cyril Balit</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                slideNumber:true,
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				//parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
