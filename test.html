@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h1{
+            font-size: 40px;
+            color:green;
+        }
+        *::shadow .big{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>hello...</h1>
+    <div id="host">
+        <h1>hello...</h1>
+    </div>
+    <script>
+        var shadow = document.querySelector('#host').createShadowRoot();
+        shadow.innerHTML = '<style>h2 { color: red; }</style>' +
+                '<h1>A new h1</h1>' +
+                '<h2>Yo, you got replaced!</h2>' +
+                '<div class="big">by my awesome content</div>';
+        shadow.resetStyleInheritance = true; // click me
+        shadow.applyAuthorStyles = true; // click me
+    </script>
+</section>
+</body>
+</html>
