@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #somecontainer {
+            color: blue;
+        }
+    </style>
+    <link rel="import" href="import.html">
+
+    <link rel="import" href="file.html"
+          onload="handleLoad(event)" onerror="handleError(event)">
+</head>
+<body>
+<section>
+    <h1>hello...</h1>
+   <div id="somecontainer">
+       <span>Put import here</span>
+   </div>
+</section>
+<script async>
+    function handleLoad(e) {
+        console.log('Loaded import: ' + e.target.href);
+    }
+    function handleError(e) {
+        console.log('Error loading import: ' + e.target.href);
+    }
+</script>
+<script>console.log('script de la page');
+window.onload=function(){
+    console.log('onload de la page');
+    checkImport();
+}
+</script>
+
+</body>
+</html>

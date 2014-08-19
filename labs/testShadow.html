@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        h1{
+            font-size: 40px;
+            color:green;
+        }
+        *::shadow h2{
+            font-weight: bold;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div id="host1">
+    <h2>Hello</h2>
+</div>
+    <div id="host2">
+        <span class="title">Hello too</span>
+        <span>Bla Bla Bla</span>
+        <p>Bla Bla Bla</p>
+    </div>
+    <script>
+        var shadow = document.querySelector('#host1').createShadowRoot();
+        shadow.innerHTML = '<h1>No content</h1>';
+    </script>
+    <script>
+        var shadow = document.querySelector('#host2').createShadowRoot();
+        shadow.innerHTML = '<h1>Keep content</h1>' +
+                '<h2><content select=".title"></content></h2>'+
+                '<section><content></content></section>';
+    </script>
+</section>
+</body>
+</html>

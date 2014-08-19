@@ -1,205 +1,441 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>Web Components - Une révolution ?</title>
+    <title>Web Components - Une révolution ?</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-	<body>
-    <a href="?#/themes">Default</a>
-    <a href="?theme=sky#/themes">Sky</a>
-    <a href="?theme=beige#/themes">Beige</a>
-    <a href="?theme=night#/themes">Night</a>
-    <a href="?theme=moon#/themes">Moon</a>
-    <a href="?theme=solarized#/themes">Solarized</a>
-		<div class="reveal">
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h2>Web Components</h2>
-					<h3>Une révolution ?</h3>
-					<img class="noBorder" width="512" height="512" src="img/logo_512x512.png" alt="webcomponents logo">
-                    <p>
-						<small>Created by <a href="https://twitter.com/cbalit">Cyril Balit</a></small>
-					</p>
-				</section>
+<body>
+<a href="?#/themes">Default</a>
+<a href="?theme=sky#/themes">Sky</a>
+<a href="?theme=beige#/themes">Beige</a>
+<a href="?theme=night#/themes">Night</a>
+<a href="?theme=moon#/themes">Moon</a>
+<a href="?theme=solarized#/themes">Solarized</a>
 
-				<section>
-					<h2>Pourquoi ?</h2>
-                    <ul>
-                        <li class="fragment" data-fragment-index="1">des widgets</li>
-                        <li class="fragment" data-fragment-index="1">des frameworks</li>
-                        <li class="fragment" data-fragment-index="2">Réutilisable</li>
-                        <li class="fragment" data-fragment-index="3">Encapsulable</li>
-                    </ul>
-				</section>
+<div class="reveal">
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+    <h2>Web Components</h2>
 
-                <section>
-                    <h2>C'est quoi ?</h2>
-                    <p class="fragment" data-fragment-index="0">
-                        4 spécifications
-                    <ul>
-                        <li class="fragment" data-fragment-index="1">Template</li>
-                        <li class="fragment" data-fragment-index="2">Html Import</li>
-                        <li class="fragment" data-fragment-index="3">Shadow Dom</li>
-                        <li class="fragment" data-fragment-index="4">Custom element</li>
-                    </ul>
-                    </p>
-                </section>
+    <h3>Une révolution ?</h3>
+    <img class="noBorder" width="512" height="512" src="img/logo_512x512.png" alt="webcomponents logo">
 
-                <section>
-                    <section>
-                        <h2>Template</h2>
-                        <img src="img/templates_256x256.png" alt="template logo">
-                    </section>
-                    <section>
-                        <h2>C'est quoi ?</h2>
+    <p>
+        <small><a href="https://twitter.com/cbalit">@cbalit</a></small>
+    </p>
+</section>
+
+<section>
+    <h2>Pourquoi des composants?</h2>
+    <ul>
+        <li class="fragment" data-fragment-index="1">des widgets ? des frameworks ? des pluggins ?</li>
+        <li class="fragment" data-fragment-index="2">Réutilisable</li>
+        <li class="fragment" data-fragment-index="3">Encapsulable</li>
+        <li class="fragment" data-fragment-index="4">Extendable</li>
+        <li class="fragment" data-fragment-index="5">"Composable"</li>
+    </ul>
+</section>
+
+<section>
+    <h2>C'est quoi ?</h2>
+
+    <p class="fragment" data-fragment-index="0">
+        4 spécifications
+    <ul>
+        <li class="fragment" data-fragment-index="1">Html Import</li>
+        <li class="fragment" data-fragment-index="2">Shadow Dom</li>
+        <li class="fragment" data-fragment-index="3">Template</li>
+        <li class="fragment" data-fragment-index="4">Custom element</li>
+    </ul>
+    </p>
+</section>
+
+<section>
+    <section>
+        <h2>Html Import</h2>
+        <img src="img/html-imports_256x256.png" alt="template logo">
+    </section>
+
+    <section>
+        <h2>Dans une page on peut charger</h2>
+        <ul>
+            <li class="fragment" data-fragment-index="1">du javascript</li>
+            <li class="fragment" data-fragment-index="2">de la css</li>
+            <li class="fragment" data-fragment-index="3">des images</li>
+            <li class="fragment" data-fragment-index="4">de la vidéo…</li>
+            <li class="fragment " data-fragment-index="5"><strong>MAIS PAS DE HTML</strong></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Comment faisait on ?</h2>
+        <ul>
+            <li class="fragment" data-fragment-index="1">iframe</li>
+            <li class="fragment" data-fragment-index="2">Ajax</li>
+            <li class="fragment" data-fragment-index="3">Hacks</li>
+            <li class="fragment " data-fragment-index="5"><strong>MAIS PAS SATISFAISANT</strong></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>La solution: des imports</h2>
+                         <pre class="fragment fade-in" data-fragment-index="1"><code data-trim>
+                             <link rel="import" href="/path/to/imports/stuff.html">
+                         </code></pre>
+        <ul>
+            <li class="fragment" data-fragment-index="2">Cors</li>
+            <li class="fragment" data-fragment-index="3">Chargé 1 seule fois dans l'ordre</li>
+            <li class="fragment" data-fragment-index="4">Ne bloque pas le parsing de la page</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Acceder au contenu</h2>
+
+        <p class="fragment" data-fragment-index="0">
+            Les éléments HTML et CSS sont chargés mais non insérés (disponibles).
+            On y accede via la propriété <strong>import</strong>
+        </p>
+                         <pre class="fragment fade-in"><code data-trim>
+                             <link rel="import" href="warnings.html">
+                             <script>
+                                 var content = document.querySelector('link[rel="import"]');
+                                 var content = link.import;
+
+                                 // Grab DOM from warning.html's document.
+                                 var el = content.querySelector('.warning');
+
+                                 document.body.appendChild(el.cloneNode(true));
+                             </script>
+                         </code></pre>
+    </section>
+
+    <section>
+        <h2>Le javascript</h2>
+        <ul>
+            <li class="fragment" data-fragment-index="2">Exécuté dans le contexte de la page</li>
+            <li class="fragment" data-fragment-index="3">acces à son DOM ...</li>
+            <li class="fragment" data-fragment-index="4">... et à celui de la page</li>
+        </ul>
+                         <pre class="fragment fade-in"><code data-trim>
+                             <script>
+                                 var importDoc = document.currentScript.ownerDocument;
+                                 var mainDoc = document;
+                             </script>
+                         </code></pre>
+    </section>
+
+    <section>
+        <h2>Les events</h2>
+
+        <p>
+            Load et Error Event
+        </p>
+                         <pre class="fragment fade-in"><code data-trim>
+                             <script async>
+                                 function handleLoad(e) {
+                                     console.log('Loaded import: ' + e.target.href);
+                                 }
+                                 function handleError(e) {
+                                     console.log('Error loading import: ' + e.target.href);
+                                 }
+                             </script>
+
+                             <link rel="import" href="file.html"
+                                   onload="handleLoad(event)" onerror="handleError(event)">
+
+                         </code></pre>
+    </section>
+
+    <section>
+        <h2>Support</h2>
+        <img class="noBorder" src="img/ImportStatus.png" alt="import current status">
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Shadow Dom</h2>
+        <img src="img/shadow-dom_256x256.png" alt="template logo">
+    </section>
+
+    <section>
+        <h2>Vieux.!!!!</h2>
+
+        <p>Les navigateurs l'utilisent déjà</p>
+                        <pre><code data-trim>
+                            <input type="range">
+                            <input type="date">
+                            <input type="hour">
+                        </code></pre>
+        <input type="range">
+        <input type="date">
+        <input type="hour">
+    </section>
+
+    <section>
+        <h2>C'est quoi Un 1 mot ?</h2>
+
+        <p class="fragment" data-fragment-index="1">
+            L'ENCAPSUALTION
+            <img src="img/aquarium-03.png">
+        </p>
+    </section>
+
+    <section>
+        <h2>L'ENCAPSUALTION</h2>
+        <ul>
+            <li class="fragment" data-fragment-index="1">Conteneur isolé</li>
+            <li class="fragment" data-fragment-index="2">Nouveau type de noeud</li>
+            <li class="fragment" data-fragment-index="3">shadow root</li>
+            <li class="fragment" data-fragment-index="4">shadow host</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Exemple</h2>
+                        <pre><code data-trim>
+                            <button>Normal button!</button>
+                            <button id="myBtn">Hello, world!</button>
+                            <script>
+                                var host = document.querySelector('#myBtn');
+                                var root = host.createShadowRoot();
+                                root.textContent = 'こんにちは、影の世界!';
+                            </script>
+                        </code></pre>
+        <button>Normal button!</button>
+        <button id="btn1">Hello, world!</button>
+        <script>
+            var host = document.querySelector('#btn1');
+            var root = host.createShadowRoot();
+            root.textContent = 'こんにちは、影の世界!';
+        </script>
+    </section>
+
+    <section>
+        <h2>En Javascript</h2>
+        <ul>
+            <li class="fragment" data-fragment-index="1">createShadowRoot</li>
+            <li class="fragment" data-fragment-index="2">element.shadowRoot</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Points d'insertions</h2>
+
+        <p>le content ...</p>
                         <pre>
                             <code data-trim>
-                                <link rel="import" href="import-file.html">
+                                <div id="host">
+                                    <span class="title">Hello too</span>
+                                    <span>Bla Bla Bla</span>
+                                </div>
+                                <script>
+                                    var shadow = document.querySelector('#host').createShadowRoot();
+                                    shadow.innerHTML = '<h1>Shadow content</h1>' +
+                                            '<h2><content select=".title"></content></h2>' +
+                                            '<section><content select="*"></content></section>';
+                                </script>
                             </code>
                         </pre>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Html Import</h2>
-                        <img src="img/html-imports_256x256.png" alt="template logo">
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Shadow Dom</h2>
-                        <img src="img/shadow-dom_256x256.png" alt="template logo">
-                    </section>
-                    <section>
-                        <h2>C'est quoi ?</h2>
-                        <pre><code data-trim>
-<button>Normal button!</button>
-<button id="myBtn">Hello, world!</button>
+        <div id="shadowHost">
+            <span class="title">Hello too</span>
+            <span>Bla Bla Bla</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>En CSS</h2>
+
+        <p>Isolé mais de nouveaux sélecteurs:</p>
+        <ul>
+            <li class="fragment" data-fragment-index="1">:host</li>
+            <li class="fragment" data-fragment-index="2">::shadow</li>
+            <li class="fragment" data-fragment-index="3">/deep/</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Support</h2>
+        <img class="noBorder" src="img/ShadowStatus.png" alt="import current status">
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Template</h2>
+        <img src="img/templates_256x256.png" alt="template logo">
+    </section>
+
+    <section>
+        <h2>C'est quoi ?</h2>
+
+        <p>Des modèles de DOM réutilisable</p>
+    </section>
+
+    <section>
+        <h2>Pas dans le document</h2>
+
+        <p>Pas d’effet de bords:</p>
+        <ul>
+            <li class="fragment" data-fragment-index="1">DOM non rendu</li>
+            <li class="fragment" data-fragment-index="2">script non interprété</li>
+            <li class="fragment" data-fragment-index="3">image non chargée</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Utilisation</h2>
+        <ol>
+            <li class="fragment" data-fragment-index="1">Récupération par sélecteur</li>
+            <li class="fragment" data-fragment-index="2">accès au contenu: content </li>
+            <li class="fragment" data-fragment-index="3">clone: devient vivant</li>
+            <li class="fragment" data-fragment-index="4">insertion du clone</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Exemple</h2>
+        <pre><code>
+<template id="mytemplate">
+    <img src="" alt="great image">
+    <div id="comment"></div>
+</template>
 <script>
-    var host = document.querySelector('#myBtn');
-    var root = host.createShadowRoot();
-    root.textContent = 'こんにちは、影の世界!';
+    var t = document.querySelector('#mytemplate');
+    // Populate the src at runtime.
+    t.content.querySelector('img').src = 'img/templates_64x64.png';
+
+    var clone = document.importNode(t.content, true);
+    document.body.appendChild(clone);
 </script>
-                        </code></pre>
-                        <button>Normal button!</button>
-                        <button id="btn1">Hello, world!</button>
-                        <script>
-                            var host = document.querySelector('#btn1');
-                            var root = host.createShadowRoot();
-                            root.textContent = 'こんにちは、影の世界!';
-                        </script>
-                    </section>
-                    <section>
-                        <h2>Le contenu</h2>
-                        <pre><code data-trim>
- <button>Normal button!</button>
-<p id="myDiv"><span>Hello, world!</span></p>
+        </code></pre>
+            <template id="mytemplate1">
+                <img src="" alt="great image">
+                <div id="comment"></div>
+            </template>
+            <div id="forTemplate1"></div>
+    </section>
+
+    <section>
+        <h2>Support</h2>
+        <img class="noBorder" src="img/TemplateStatus.png" alt="import current status">
+    </section>
+</section>
+
+
+<section>
+    <section>
+        <h2>Custom element</h2>
+        <img src="img/custom-elements_256x256.png" alt="template logo">
+    </section>
+
+    <section>
+        <h2>C'est quoi ?</h2>
+
+        <p>Définir de nouveaux types d’éléments HTML</p>
+    </section>
+
+    <section>
+        <h2>C'est quoi ?</h2>
+
+        <p>Définir de nouveaux types d’éléments HTML</p>
+    </section>
+
+    <section>
+        <h2>Support</h2>
+        <img class="noBorder" src="img/CustomStatus.png" alt="import current status">
+    </section>
+</section>
+
+
+<section>
+    <h1>Merci !!!</h1>
+
+    <h3>Cyril Balit</h3>
+</section>
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
 <script>
-    var el = document.querySelector('#myDiv');
-    var shadow = el.createShadowRoot();
-    shadow.innerHTML = '<content select="h1"></content>';
-    document.body.appendChild(el);
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        //parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
 </script>
-                        </code></pre>
-                        <div id="div1"><span>Hello, world!</span></div>
-                        <script>
-                            var el = document.querySelector('#div1');
-                            var shadow = el.createShadowRoot();
-                            shadow.innerHTML = '<content select="h1"></content>';
-                            document.body.appendChild(el);
-                        </script>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Custom element</h2>
-                        <img src="img/custom-elements_256x256.png" alt="template logo">
-                    </section>
-                </section>
-
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable class="html">
-<element name="x-gangnam-style">
-    <p>Courtesy of <a href="#">highlight.js</a>jjj.</p>
-</element>
-					</code></pre>
-				</section>
-
-				<section>
-					<h1>Merci !!!</h1>
-					<h3>Cyril Balit</h3>
-				</section>
-
-			</div>
-
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
-
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-                slideNumber:true,
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-				//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				//parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-
-	</body>
+<script src="js/test.js"></script>
+</body>
 </html>

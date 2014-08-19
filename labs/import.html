@@ -1,0 +1,33 @@
+<style>
+    /* Note: <style> in an import apply to the main
+       document by default. That is, style tags don't need to be
+       explicitly added to the main document. */
+    #somecontainer {
+        color: red;
+    }
+</style>
+...
+<section id="content">
+    <h1>Hello from import</h1>
+</section>
+
+<script>
+    console.log('script import');
+    // importDoc references this import's document
+    var importDoc = document.currentScript.ownerDocument;
+
+    // mainDoc references the main document (the page that's importing us)
+    var mainDoc = document;
+
+    // Grab the content from this import, clone it,
+    // and append it to the body of the importing document.
+    var content = importDoc.querySelector('#content');
+    //mainDoc.body.appendChild(content.cloneNode(true));
+    var mainContent=document.querySelector('#somecontainer');
+    mainContent.appendChild(content.cloneNode(true));
+
+
+    var checkImport=function(){
+        console.log('import function');
+    }
+</script>
