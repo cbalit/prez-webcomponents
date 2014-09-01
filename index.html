@@ -40,6 +40,10 @@
             color:green;
         }
 
+        #elemt1 span{
+            color:limegreen;
+        }
+
     </style>
 
     <!--[if lt IE 9]>
@@ -556,8 +560,6 @@ my-element{
     </section>
     <section>
         <h2>Shadow DOM versus Light DOM</h2>
-
-        <p>Peuvent être séléctionés</p>
         <pre>
             <code>
 <my-element>
@@ -568,11 +570,37 @@ my-element{
     </section>
     <section>
         <h2>Styling light dom</h2>
-
         <ul>
             <li class="fragment" data-fragment-index="1">in and out</li>
             <li class="fragment" data-fragment-index="2">::content</li>
         </ul>
+        <pre><code>
+#elemt span{
+     color:limegreen;
+}
+
+<div id="elemt">
+    <span>Hello</span>
+</div>
+
+Shadow dom:
+<style>
+    ::content span{text-decoration: underline;}
+</style>
+<h3>Shadow DOM</h3>
+<content></content>
+
+        </code></pre>
+        <div id="elemt1">
+            <span>Hello</span>
+        </div>
+        <script>
+            var elmt=document.querySelector('#elemt1');
+            var root = elmt.createShadowRoot();
+            root.innerHTML = '<style>::content span{text-decoration: underline;}</style>\
+    <h3>Shadow DOM</h3>\
+    <content></content>';
+        </script>
     </section>
     <section>
         <h2>Inside shadow dom</h2>
