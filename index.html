@@ -44,6 +44,11 @@
             color:limegreen;
         }
 
+
+         #hostDiv::shadow span {
+             color: red;
+         }
+
     </style>
 
     <!--[if lt IE 9]>
@@ -52,12 +57,13 @@
 </head>
 
 <body>
-<a href="?#/themes">Default</a>
+<!--<a href="?#/themes">Default</a>
 <a href="?theme=sky#/themes">Sky</a>
 <a href="?theme=beige#/themes">Beige</a>
 <a href="?theme=night#/themes">Night</a>
 <a href="?theme=moon#/themes">Moon</a>
 <a href="?theme=solarized#/themes">Solarized</a>
+-->
 
 <div class="reveal">
 <!-- Any section element inside of this container is displayed as a slide -->
@@ -89,12 +95,12 @@
 
     <p class="fragment" data-fragment-index="0">
         4 spécifications
-    <ul>
+    <ol>
         <li class="fragment" data-fragment-index="1">Html Import</li>
         <li class="fragment" data-fragment-index="2">Shadow Dom</li>
         <li class="fragment" data-fragment-index="3">Template</li>
-        <li class="fragment" data-fragment-index="4">Custom element</li>
-    </ul>
+        <li class="fragment" data-fragment-index="4">Custom Element</li>
+    </ol>
     </p>
 </section>
 
@@ -121,17 +127,17 @@
             <li class="fragment" data-fragment-index="1">iframe</li>
             <li class="fragment" data-fragment-index="2">Ajax</li>
             <li class="fragment" data-fragment-index="3">Hacks</li>
-            <li class="fragment " data-fragment-index="5"><strong>MAIS PAS SATISFAISANT</strong></li>
         </ul>
+        <p class="fragment " data-fragment-index="5"><strong>MAIS PAS SATISFAISANT</strong></p>
     </section>
 
     <section>
         <h2>La solution: des imports</h2>
                          <pre class="fragment fade-in" data-fragment-index="1"><code data-trim>
-                             <link rel="import" href="/path/to/imports/stuff.html">
+                             <link rel="import" href="/path/myfile.html">
                          </code></pre>
         <ul>
-            <li class="fragment" data-fragment-index="2">Cors</li>
+            <li class="fragment" data-fragment-index="2">CORS</li>
             <li class="fragment" data-fragment-index="3">Chargé 1 seule fois dans l'ordre</li>
             <li class="fragment" data-fragment-index="4">Ne bloque pas le parsing de la page</li>
         </ul>
@@ -145,13 +151,12 @@
             On y accede via la propriété <strong>import</strong>
         </p>
                          <pre class="fragment fade-in"><code data-trim>
- <link rel="import" href="warnings.html">
+ <link rel="import" href="myfile.html">
  <script>
      var content = document.querySelector('link[rel="import"]');
      var content = link.import;
-
-     // Grab DOM from warning.html's document.
-     var el = content.querySelector('.warning');
+     //I can now acees to my content
+     var el = content.querySelector('.mySelector');
 
      document.body.appendChild(el.cloneNode(true));
  </script>
@@ -208,7 +213,7 @@
     </section>
 
     <section>
-        <h2>Vieux.!!!!</h2>
+        <h2>Vieux !!!!</h2>
 
         <p>Les navigateurs l'utilisent déjà</p>
                         <pre><code data-trim>
@@ -240,25 +245,6 @@
         </ul>
     </section>
 
-    <section>
-        <h2>Exemple</h2>
-                        <pre><code data-trim>
-<button>Normal button!</button>
-<button id="myBtn">Hello, world!</button>
-<script>
-    var host = document.querySelector('#myBtn');
-    var root = host.createShadowRoot();
-    root.textContent = 'こんにちは、影の世界!';
-</script>
-                        </code></pre>
-        <button>Normal button!</button>
-        <button id="btn1">Hello, world!</button>
-        <script>
-            var host = document.querySelector('#btn1');
-            var root = host.createShadowRoot();
-            root.textContent = 'こんにちは、影の世界!';
-        </script>
-    </section>
 
     <section>
         <h2>En Javascript</h2>
@@ -266,12 +252,50 @@
             <li class="fragment" data-fragment-index="1">createShadowRoot</li>
             <li class="fragment" data-fragment-index="2">element.shadowRoot</li>
         </ul>
+        <pre class="fragment fade-in"><code data-trim>
+<button>Normal button!</button>
+<button id="myBtn">Hello, world!</button>
+<script>
+    var host = document.querySelector('#myBtn');
+    var root = host.createShadowRoot();
+    root.textContent = 'こんにちは、影の世界!';
+</script>
+        </code></pre>
+        <div class="fragment fade-in">
+            <button>Normal button!</button>
+            <button id="btn1">Hello, world!</button>
+            <script>
+                var host = document.querySelector('#btn1');
+                var root = host.createShadowRoot();
+                root.textContent = 'こんにちは、影の世界!';
+            </script>
+        </div>
+    </section>
+
+    <section>
+        <h2>Shadow DOM versus Light DOM</h2>
+        <pre>
+            <code>
+                <my-element>
+                    <span>Hello</span>
+                </my-element>
+            </code>
+        </pre>
+        <ul>
+            <li class="fragment" data-fragment-index="1">sous-arbre visible (childNodes, children, innerHTML ...)</li>
+            <li class="fragment" data-fragment-index="2">noeud <strong>interne</strong></li>
+            <li class="fragment" data-fragment-index="3">composed DOM: ce que le navigateur voit et rend</strong></li>
+        </ul>
     </section>
 
     <section>
         <h2>Points d'insertions</h2>
 
         <p>le content ...</p>
+        <ul>
+            <li class="fragment" data-fragment-index="1">Definir des zones de render dans le shadow Dom</li>
+            <li class="fragment" data-fragment-index="2">Pas de lien logique</li>
+        </ul>
                         <pre class="fragment fade-in">
                             <code data-trim>
 <div id="host">
@@ -286,7 +310,7 @@
 </script>
                             </code>
                         </pre>
-        <div id="shadowHost" class="fragment fade-in left">
+        <div id="shadowHost" class="fragment fade-in aside">
             <span class="title">Hello too</span>
             <span>Bla Bla Bla</span>
         </div>
@@ -560,7 +584,7 @@ my-element{
 
         <p class="fragment" data-fragment-index="1">Flash Of Unstyled Content</p>
         <ul>
-            <li class="fragment" data-fragment-index="2">élément affiché avant qu’il soit enegistré</li>
+            <li class="fragment" data-fragment-index="2">élément affiché avant qu’il soit enregistré</li>
             <li class="fragment" data-fragment-index="3">:unresolved</li>
         </ul>
     </section>
@@ -597,7 +621,7 @@ Shadow dom:
 <content></content>
 
         </code></pre>
-        <div id="elemt1" class="fragment fade-in left">
+        <div id="elemt1" class="fragment fade-in aside">
             <span>Hello</span>
         </div>
         <script>
@@ -618,6 +642,24 @@ Shadow dom:
             <li class="fragment" data-fragment-index="3">::host(pseudo-class)</li>
             <li class="fragment" data-fragment-index="4">::host-context(selector)</li>
         </ul>
+        <pre class="fragment fade-in"><code>
+<button>My Button</button>
+<style>
+    :host {
+        opacity: 0.4;
+        transition: opacity 420ms ease-in-out;
+    }
+    :host(.red) {
+        color:red;
+    }
+    :host(:hover) {
+        opacity: 1;
+    }
+</style>
+</code></pre>
+        <div class="fragment faded-in aside">
+            <button id="hostButton" class="red">My Button</button>
+        </div>
     </section>
     <section>
         <h2>Outside shadow dom</h2>
@@ -626,6 +668,22 @@ Shadow dom:
             <li class="fragment" data-fragment-index="1">::shadow</li>
             <li class="fragment" data-fragment-index="2">/deep/</li>
         </ul>
+        <pre class="fragment fade-in"><code>
+<style>
+    #host::shadow span {
+        color: red;
+    }
+</style>
+
+<div id="host"></div>
+
+<script>
+    var host = document.querySelector('#hostDiv');
+    var root = host.createShadowRoot();
+    root.innerHTML = "<span>Shadow DOM</span>";
+</script>
+        </code></pre>
+        <div class="fragment fade-in" id="hostDiv"></div>
     </section>
 </section>
 <section>
@@ -658,6 +716,22 @@ Shadow dom:
             <li class="fragment" data-fragment-index="4">X-Tag Core Library</li>
         </ul>
     </section>
+</section>
+
+<section>
+    <h1>Ressources</h1>
+    <ul>
+        <li ><a href="http://www.html5rocks.com/en/tutorials/webcomponents/imports/">Import</a></li>
+        <li ><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/">Shadow Dom</a></li>
+        <li ><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/">Styling Shadow Dom</a></li>
+        <li ><a href="http://www.html5rocks.com/en/tutorials/webcomponents/template/">Template</a></li>
+        <li ><a href="http://www.html5rocks.com/en/tutorials/webcomponents/customelements/">Custom Elements</a></li>
+        <li ><a href="https://speakerdeck.com/robdodson/the-web-component-ecosystem">The Web Component Ecosystem</a></li>
+        <li ><a href="http://www.polymer-project.org/">Polymer</a></li>
+        <li ><a href="http://x-tags.org/">X-Tag</a></li>
+    </ul>
+
+    <p class="space"> Credits: <a href="https://twitter.com/ebidel">Eric Bidelman</a>,<a href="https://twitter.com/rob_dodson">Rob Dodson</a>,<a href="https://twitter.com/coonsta">Dominic Cooney</a></p>
 </section>
 
 

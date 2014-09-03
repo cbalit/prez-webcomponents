@@ -13,3 +13,21 @@ t.content.querySelector('#comment').innerHTML = 'My new comment';
 
 var clone = document.importNode(t.content, true);
 document.querySelector('#forTemplate1').appendChild(clone);
+
+
+/******** STYLING TEST ***************************/
+var button = document.querySelector('#hostButton');
+var root = button.createShadowRoot();
+root.innerHTML = '<style>' +
+    ':host { text-transform: uppercase; }' +
+    ':host {opacity: 0.4;transition: opacity 420ms ease-in-out;}'+
+    ':host(.red) {color: red;}'+
+    ':host(:hover) {opacity: 1;}'+
+    '</style>' +
+    '<content></content>';
+
+
+
+var host = document.querySelector('#hostDiv');
+var root = host.createShadowRoot();
+root.innerHTML = "<span>Shadow DOM</span>";

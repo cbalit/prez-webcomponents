@@ -4,8 +4,12 @@
 }
 
 
-.left{
+.aside{
     position: absolute;
     left:100%;
     top:20%;
+}
+
+p.space{
+    margin: 15px;
 }
