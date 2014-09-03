@@ -212,9 +212,9 @@
 
         <p>Les navigateurs l'utilisent déjà</p>
                         <pre><code data-trim>
-                            <input type="range">
-                            <input type="date">
-                            <input type="hour">
+<input type="range">
+<input type="date">
+<input type="hour">
                         </code></pre>
         <input type="range">
         <input type="date">
@@ -243,13 +243,13 @@
     <section>
         <h2>Exemple</h2>
                         <pre><code data-trim>
-                            <button>Normal button!</button>
-                            <button id="myBtn">Hello, world!</button>
-                            <script>
-                                var host = document.querySelector('#myBtn');
-                                var root = host.createShadowRoot();
-                                root.textContent = 'こんにちは、影の世界!';
-                            </script>
+<button>Normal button!</button>
+<button id="myBtn">Hello, world!</button>
+<script>
+    var host = document.querySelector('#myBtn');
+    var root = host.createShadowRoot();
+    root.textContent = 'こんにちは、影の世界!';
+</script>
                         </code></pre>
         <button>Normal button!</button>
         <button id="btn1">Hello, world!</button>
@@ -272,21 +272,21 @@
         <h2>Points d'insertions</h2>
 
         <p>le content ...</p>
-                        <pre>
+                        <pre class="fragment fade-in">
                             <code data-trim>
-                                <div id="host">
-                                    <span class="title">Hello too</span>
-                                    <span>Bla Bla Bla</span>
-                                </div>
-                                <script>
-                                    var shadow = document.querySelector('#host').createShadowRoot();
-                                    shadow.innerHTML = '<h1>Shadow content</h1>' +
-                                            '<h2><content select=".title"></content></h2>' +
-                                            '<section><content select="*"></content></section>';
-                                </script>
+<div id="host">
+    <span class="title">Hello too</span>
+    <span>Bla Bla Bla</span>
+</div>
+<script>
+    var shadow = document.querySelector('#host').createShadowRoot();
+    shadow.innerHTML = '<h1>In Shadow</h1>' +
+            '<h2><content select=".title"></content></h2>' +
+            '<section><content select="*"></content></section>';
+</script>
                             </code>
                         </pre>
-        <div id="shadowHost">
+        <div id="shadowHost" class="fragment fade-in left">
             <span class="title">Hello too</span>
             <span>Bla Bla Bla</span>
         </div>
@@ -344,7 +344,7 @@
 
     <section>
         <h2>Exemple</h2>
-        <pre><code>
+        <pre class="fragment fade-in"><code>
 <template id="mytemplate">
     <img src="" alt="great image">
     <div id="comment"></div>
@@ -353,6 +353,7 @@
     var t = document.querySelector('#mytemplate');
     // Populate the src at runtime.
     t.content.querySelector('img').src = 'img/templates_64x64.png';
+    t.content.querySelector('#comment').innerHTML = 'My new comment';
 
     var clone = document.importNode(t.content, true);
     document.body.appendChild(clone);
@@ -362,7 +363,7 @@
                 <img src="" alt="great image">
                 <div id="comment"></div>
             </template>
-            <div id="forTemplate1"></div>
+            <div id="forTemplate1" class="fragment fade-in"></div>
     </section>
 
     <section>
@@ -390,7 +391,12 @@
 
     <section>
         <h2>Comment ?</h2>
-        <pre>
+        <ul>
+            <li class="fragment" data-fragment-index="1">registerElement</li>
+            <li class="fragment" data-fragment-index="2">un nom (avec un -)</li>
+            <li class="fragment" data-fragment-index="3">un proto (HTMLElement par defaut)</li>
+        </ul>
+        <pre class="fragment fade-in">
         <code data-trim>
 <script>
     var myElt = document.registerElement('my-elt',HTMLElement.prototype);
@@ -399,15 +405,11 @@
 <my-elt></my-elt>
         </code>
         </pre>
-        <ul>
-            <li class="fragment" data-fragment-index="1">un nom (avec un -)</li>
-            <li class="fragment" data-fragment-index="2">un proto (HTMLElement par defaut)</li>
-        </ul>
     </section>
 
     <section>
         <h2>Extend existing element</h2>
-        <pre>
+        <pre class="fragment fade-in">
         <code data-trim>
             <script>
 var myButton = document.registerElement('my-button', {
@@ -423,7 +425,6 @@ var myButton = document.registerElement('my-button', {
 
     <section>
         <h2>Attention aux balises</h2>
-
         <p><pre><code><tabs></code></pre></p>
         <p class="fragment" data-fragment-index="1">HTMLUnknownElement</p>
         <p><pre><code><my-tabs></code></pre></p>
@@ -432,13 +433,13 @@ var myButton = document.registerElement('my-button', {
 
     <section>
         <h2>Cycle de vie</h2>
-        <p>Déclaration vs enegistrement
+        <p>Déclaration vs enregistrement
 
             <ul>
-                <li>considéré comme <strong>unresolved</strong></p></li>
-                <li>pseudo-selector :unresolved</li>
+                <li class="fragment" data-fragment-index="1">considéré comme <strong>unresolved</strong></p></li>
+                <li class="fragment" data-fragment-index="2">pseudo-selector :unresolved</li>
             </ul>
-        <pre>
+        <pre class="fragment fade-in">
             <code>
 <style>
     *:unresolved {
@@ -451,9 +452,10 @@ var myButton = document.registerElement('my-button', {
         </pre>
 
 
-
-        <my-element>i'm unresolved</my-element>
-        <button onclick="document.registerElement('my-element')">Register</button>
+        <div class="fragment fade-in">
+            <my-element>i'm unresolved</my-element>
+            <button onclick="document.registerElement('my-element')">Register</button>
+        </div>
     </section>
 
     <section>
@@ -465,7 +467,7 @@ var myButton = document.registerElement('my-button', {
             <li  class="fragment" data-fragment-index="3">detachedCallback</li>
             <li  class="fragment" data-fragment-index="4">attributeChangedCallback</li>
         </ul>
-        <pre>
+        <pre class="fragment fade-in">
             <code>
 var myElemtProto = Object.create(HTMLElement.prototype);
 
@@ -477,18 +479,21 @@ var myElemt = document.registerElement('my-element', myElemtProto);
     </section>
     <section>
         <h2>Ajouter du contenu</h2>
-        <pre>
+        <img src="img/html.jpg" alt="template logo">
+    </section>
+    <section>
+        <h2>innerHTML</h2>
+        <pre class="fragment fade-in">
             <code>
 myEltProto.createdCallback = function() {
     this.innerHTML = "<b>un peu de contenu!</b>";
 };
             </code>
         </pre>
-        <p class="fragment" data-fragment-index="1">innerHTML</p>
     </section>
     <section>
-        <h2>Ajouter du contenu</h2>
-        <pre>
+        <h2>shadowDom</h2>
+        <pre class="fragment fade-in">
             <code>
 myEltProto.createdCallback = function() {
     var shadow = this.createShadowRoot();
@@ -496,11 +501,10 @@ myEltProto.createdCallback = function() {
 };
             </code>
         </pre>
-        <p class="fragment" data-fragment-index="1">shadowDom</p>
     </section>
     <section>
-        <h2>Ajouter du contenu</h2>
-        <pre>
+        <h2>Template</h2>
+        <pre class="fragment fade-in">
             <code>
 <template id="sdtemplate">
 
@@ -513,17 +517,19 @@ myEltProto.createdCallback = function() {
 };
             </code>
         </pre>
-        <p class="fragment" data-fragment-index="1">Template</p>
     </section>
     <section>
         <h2>Ajouter du code</h2>
-        <pre>
+        <img class="noBorder" src="img/js.jpg">
+    </section>
+    <section>
+        <h2>Le prototype</h2>
+        <pre class="fragment fade-in">
             <code>
 myEltProto.myFctn=function(){...}
 Object.defineProperty(myEltProto, "bar", {value: 5});
             </code>
         </pre>
-        <p class="fragment" data-fragment-index="1">Le prototype</p>
     </section>
 
     <section>
@@ -541,7 +547,7 @@ Object.defineProperty(myEltProto, "bar", {value: 5});
         <h2>Custom element</h2>
 
         <p>Peuvent être séléctionés</p>
-        <pre>
+        <pre class="fragment fade-in">
             <code>
 my-element{
     color:green;
@@ -560,7 +566,7 @@ my-element{
     </section>
     <section>
         <h2>Shadow DOM versus Light DOM</h2>
-        <pre>
+        <pre class="fragment fade-in">
             <code>
 <my-element>
     <span>Hello</span>
@@ -574,12 +580,12 @@ my-element{
             <li class="fragment" data-fragment-index="1">in and out</li>
             <li class="fragment" data-fragment-index="2">::content</li>
         </ul>
-        <pre><code>
+        <pre class="fragment fade-in"><code>
 #elemt span{
      color:limegreen;
 }
 
-<div id="elemt">
+<div id="elemt"">
     <span>Hello</span>
 </div>
 
@@ -591,7 +597,7 @@ Shadow dom:
 <content></content>
 
         </code></pre>
-        <div id="elemt1">
+        <div id="elemt1" class="fragment fade-in left">
             <span>Hello</span>
         </div>
         <script>
