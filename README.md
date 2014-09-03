@@ -1,5 +1,7 @@
 # A simple presentation about web components
 
+You can see the presentation [here](http://cbalit.github.io/prez-webcomponents/#/)
+
 ## We are going to speak about:
 - [Template](http://www.whatwg.org/specs/web-apps/current-work/multipage/scripting.html#the-template-element)
 - [Html Import](http://w3c.github.io/webcomponents/spec/imports/)
