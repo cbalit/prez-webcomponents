@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<span>I'm in the main page</span>
+<script>
+    window.onload=function(){
+        console.log('MAIN PAGE LOADED');
+    }
+</script>
+<script>
+    console.log('script in main page');
+    window.name='cyril';
+</script>
+<script async>
+    function onImportLoad(){
+        console.log('import load');
+    }
+</script>
+
+<link id="my-template" rel="import" href="template.html" onload="onImportLoad()">
+<script async>
+    console.log('load import stuff');
+    var link = document.querySelector('#my-template');
+    var content = link.import;
+    //I can now acees to my content
+    var el = content.querySelector('.mySelector');
+
+    document.body.appendChild(el.cloneNode(true));
+</script>
+
+</body>
+</html>
