@@ -85,7 +85,7 @@
         <li class="fragment" data-fragment-index="1">des widgets ? des frameworks ? des pluggins ?</li>
         <li class="fragment" data-fragment-index="2">Réutilisable</li>
         <li class="fragment" data-fragment-index="3">Encapsulable</li>
-        <li class="fragment" data-fragment-index="4">Extendable</li>
+        <li class="fragment" data-fragment-index="4">Etendable</li>
         <li class="fragment" data-fragment-index="5">"Composable"</li>
     </ul>
 </section>
@@ -111,28 +111,13 @@
     </section>
 
     <section>
-        <h2>Dans une page on peut charger</h2>
-        <ul>
-            <li class="fragment" data-fragment-index="1">du javascript</li>
-            <li class="fragment" data-fragment-index="2">de la css</li>
-            <li class="fragment" data-fragment-index="3">des images</li>
-            <li class="fragment" data-fragment-index="4">de la vidéo…</li>
-            <li class="fragment " data-fragment-index="5"><strong>MAIS PAS DE HTML</strong></li>
-        </ul>
+        <h2>C'est quoi ?</h2>
+
+        <p>Inclure un élément HTML à l'intérieur d'un autre</p>
     </section>
 
     <section>
-        <h2>Comment faisait on ?</h2>
-        <ul>
-            <li class="fragment" data-fragment-index="1">iframe</li>
-            <li class="fragment" data-fragment-index="2">Ajax</li>
-            <li class="fragment" data-fragment-index="3">Hacks</li>
-        </ul>
-        <p class="fragment " data-fragment-index="5"><strong>MAIS PAS SATISFAISANT</strong></p>
-    </section>
-
-    <section>
-        <h2>La solution: des imports</h2>
+        <h2>Comment ?</h2>
                          <pre class="fragment fade-in" data-fragment-index="1"><code data-trim>
                              <link rel="import" href="/path/myfile.html">
                          </code></pre>
@@ -144,16 +129,16 @@
     </section>
 
     <section>
-        <h2>Acceder au contenu</h2>
+        <h2>Accèder au contenu</h2>
 
         <p class="fragment" data-fragment-index="0">
             Les éléments HTML et CSS sont chargés mais non insérés (disponibles).
             On y accede via la propriété <strong>import</strong>
         </p>
                          <pre class="fragment fade-in"><code data-trim>
- <link rel="import" href="myfile.html">
+ <link id="my-import"rel="import" href="myfile.html">
  <script>
-     var content = document.querySelector('link[rel="import"]');
+     var content = document.querySelector('#my-import');
      var content = link.import;
      //I can now acees to my content
      var el = content.querySelector('.mySelector');
@@ -167,7 +152,7 @@
         <h2>Le javascript</h2>
         <ul>
             <li class="fragment" data-fragment-index="2">Exécuté dans le contexte de la page</li>
-            <li class="fragment" data-fragment-index="3">acces à son DOM ...</li>
+            <li class="fragment" data-fragment-index="3">Accès à son DOM ...</li>
             <li class="fragment" data-fragment-index="4">... et à celui de la page</li>
         </ul>
                          <pre class="fragment fade-in"><code data-trim>
@@ -227,16 +212,16 @@
     </section>
 
     <section>
-        <h2>C'est quoi Un 1 mot ?</h2>
+        <h2>C'est quoi ?</h2>
 
         <p class="fragment" data-fragment-index="1">
-            L'ENCAPSUALTION
+            L'ENCAPSULATION
             <img src="img/aquarium-03.png">
         </p>
     </section>
 
     <section>
-        <h2>L'ENCAPSUALTION</h2>
+        <h2>L'ENCAPSULATION</h2>
         <ul>
             <li class="fragment" data-fragment-index="1">Conteneur isolé</li>
             <li class="fragment" data-fragment-index="2">Nouveau type de noeud</li>
@@ -293,7 +278,7 @@
 
         <p>le content ...</p>
         <ul>
-            <li class="fragment" data-fragment-index="1">Definir des zones de render dans le shadow Dom</li>
+            <li class="fragment" data-fragment-index="1">Définir des zones de render dans le shadow Dom</li>
             <li class="fragment" data-fragment-index="2">Pas de lien logique</li>
         </ul>
                         <pre class="fragment fade-in">
@@ -316,16 +301,6 @@
         </div>
     </section>
 
-    <section>
-        <h2>En CSS</h2>
-
-        <p>Isolé mais de nouveaux sélecteurs:</p>
-        <ul>
-            <li class="fragment" data-fragment-index="1">:host</li>
-            <li class="fragment" data-fragment-index="2">::shadow</li>
-            <li class="fragment" data-fragment-index="3">/deep/</li>
-        </ul>
-    </section>
 
     <section>
         <h2>Support</h2>
@@ -342,13 +317,13 @@
     <section>
         <h2>C'est quoi ?</h2>
 
-        <p>Des modèles de DOM réutilisable</p>
+        <p>Des modèles de DOM réutilisables</p>
     </section>
 
     <section>
         <h2>Pas dans le document</h2>
 
-        <p>Pas d’effet de bords:</p>
+        <p>Pas d’effet de bord:</p>
         <ul>
             <li class="fragment" data-fragment-index="1">DOM non rendu</li>
             <li class="fragment" data-fragment-index="2">script non interprété</li>
@@ -570,7 +545,7 @@ Object.defineProperty(myEltProto, "bar", {value: 5});
     <section>
         <h2>Custom element</h2>
 
-        <p>Peuvent être séléctionés</p>
+        <p>Peuvent être séléctionnés</p>
         <pre class="fragment fade-in">
             <code>
 my-element{
@@ -587,16 +562,6 @@ my-element{
             <li class="fragment" data-fragment-index="2">élément affiché avant qu’il soit enregistré</li>
             <li class="fragment" data-fragment-index="3">:unresolved</li>
         </ul>
-    </section>
-    <section>
-        <h2>Shadow DOM versus Light DOM</h2>
-        <pre class="fragment fade-in">
-            <code>
-<my-element>
-    <span>Hello</span>
-</my-element>
-            </code>
-        </pre>
     </section>
     <section>
         <h2>Styling light dom</h2>
