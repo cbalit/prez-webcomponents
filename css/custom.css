@@ -13,3 +13,12 @@
 p.space{
     margin: 15px;
 }
+
+section .twt{
+    background:url('../img/Twitter-Logo.png')  0 0 no-repeat;
+    background-size: 50px 50px;
+    padding-left: 60px;
+    line-height: 50px;
+    height: 50px;
+    display: inline-block;
+}
