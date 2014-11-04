@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Web Components - Une révolution ?</title>
+    <title>Web Components - A revolution ?</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -45,9 +45,9 @@
         }
 
 
-         #hostDiv::shadow span {
-             color: red;
-         }
+        #hostDiv::shadow span {
+            color: red;
+        }
 
     </style>
 
@@ -71,7 +71,7 @@
 <section>
     <h2>Web Components</h2>
 
-    <h3>Une révolution ?</h3>
+    <h3>A revolution ?</h3>
     <img class="noBorder" width="512" height="512" src="img/logo_512x512.png" alt="webcomponents logo">
 
     <p>
@@ -80,21 +80,21 @@
 </section>
 
 <section>
-    <h2>Pourquoi des composants?</h2>
+    <h2>Why components ?</h2>
     <ul>
-        <li class="fragment" data-fragment-index="1">des widgets ? des frameworks ? des pluggins ?</li>
-        <li class="fragment" data-fragment-index="2">Réutilisable</li>
-        <li class="fragment" data-fragment-index="3">Encapsulable</li>
-        <li class="fragment" data-fragment-index="4">Etendable</li>
-        <li class="fragment" data-fragment-index="5">"Composable"</li>
+        <li class="fragment" data-fragment-index="1">For widgets ?  applications ?  pluggins ?</li>
+        <li class="fragment" data-fragment-index="2">Reusable</li>
+        <li class="fragment" data-fragment-index="3">Encapsulate</li>
+        <li class="fragment" data-fragment-index="4">Extendable</li>
+        <li class="fragment" data-fragment-index="5">This is the way we already do it</li>
     </ul>
 </section>
 
 <section>
-    <h2>C'est quoi ?</h2>
+    <h2>What is it ?</h2>
 
     <p class="fragment" data-fragment-index="0">
-        4 spécifications
+        4 specifications
     <ol>
         <li class="fragment" data-fragment-index="1">Html Import</li>
         <li class="fragment" data-fragment-index="2">Shadow Dom</li>
@@ -111,76 +111,76 @@
     </section>
 
     <section>
-        <h2>C'est quoi ?</h2>
+        <h2>What is it ?</h2>
 
-        <p>Inclure un élément HTML à l'intérieur d'un autre</p>
+        <p>Include an HTML element inside another one</p>
     </section>
 
     <section>
-        <h2>Comment ?</h2>
+        <h2>How ?</h2>
                          <pre class="fragment fade-in" data-fragment-index="1"><code data-trim>
                              <link rel="import" href="/path/myfile.html">
                          </code></pre>
         <ul>
             <li class="fragment" data-fragment-index="2">CORS</li>
-            <li class="fragment" data-fragment-index="3">Chargé 1 seule fois dans l'ordre</li>
-            <li class="fragment" data-fragment-index="4">Ne bloque pas le parsing de la page</li>
+            <li class="fragment" data-fragment-index="3">Load once</li>
+            <li class="fragment" data-fragment-index="4">Don't block page parsing</li>
         </ul>
     </section>
 
     <section>
-        <h2>Accèder au contenu</h2>
+        <h2>Get the content</h2>
 
         <p class="fragment" data-fragment-index="0">
-            Les éléments HTML et CSS sont chargés mais non insérés (disponibles).
-            On y accede via la propriété <strong>import</strong>
+            HTML and CSS are just loaded but not included (available)
+            We retrieve the content using the  <strong>import</strong> property
         </p>
                          <pre class="fragment fade-in"><code data-trim>
- <link id="my-import"rel="import" href="myfile.html">
- <script>
-     var content = document.querySelector('#my-import');
-     var content = link.import;
-     //I can now acees to my content
-     var el = content.querySelector('.mySelector');
+                             <link id="my-import"rel="import" href="myfile.html">
+                             <script>
+                                 var content = document.querySelector('#my-import');
+                                 var content = link.import;
+                                 //I can now acces to my content
+                                 var el = content.querySelector('.mySelector');
 
-     document.body.appendChild(el.cloneNode(true));
- </script>
+                                 document.body.appendChild(el.cloneNode(true));
+                             </script>
                          </code></pre>
     </section>
 
     <section>
-        <h2>Le javascript</h2>
+        <h2>And for Javascript ...</h2>
         <ul>
-            <li class="fragment" data-fragment-index="2">Exécuté dans le contexte de la page</li>
-            <li class="fragment" data-fragment-index="3">Accès à son DOM ...</li>
-            <li class="fragment" data-fragment-index="4">... et à celui de la page</li>
+            <li class="fragment" data-fragment-index="2">Run in the page content</li>
+            <li class="fragment" data-fragment-index="3">Can access to its DOM ...</li>
+            <li class="fragment" data-fragment-index="4">... and the one from the page</li>
         </ul>
                          <pre class="fragment fade-in"><code data-trim>
-<script>
- var importDoc = document.currentScript.ownerDocument;
- var mainDoc = document;
-</script>
+                             <script>
+                                 var importDoc = document.currentScript.ownerDocument;
+                                 var mainDoc = document;
+                             </script>
                          </code></pre>
     </section>
 
     <section>
-        <h2>Les events</h2>
+        <h2>Events</h2>
 
         <p>
-            Load et Error Event
+            Load and Error Event
         </p>
                          <pre class="fragment fade-in"><code data-trim>
- <script async>
-     function handleLoad(e) {
-         console.log('Loaded import: ' + e.target.href);
-     }
-     function handleError(e) {
-         console.log('Error loading import: ' + e.target.href);
-     }
- </script>
+                             <script async>
+                                 function handleLoad(e) {
+                                     console.log('Loaded import: ' + e.target.href);
+                                 }
+                                 function handleError(e) {
+                                     console.log('Error loading import: ' + e.target.href);
+                                 }
+                             </script>
 
- <link rel="import" href="file.html"
-       onload="handleLoad(event)" onerror="handleError(event)">
+                             <link rel="import" href="file.html"
+                                   onload="handleLoad(event)" onerror="handleError(event)">
 
                          </code></pre>
     </section>
@@ -198,13 +198,13 @@
     </section>
 
     <section>
-        <h2>Vieux !!!!</h2>
+        <h2>Old !!!!</h2>
 
-        <p>Les navigateurs l'utilisent déjà</p>
+        <p>Browsers already use it</p>
                         <pre><code data-trim>
-<input type="range">
-<input type="date">
-<input type="hour">
+                            <input type="range">
+                            <input type="date">
+                            <input type="hour">
                         </code></pre>
         <input type="range">
         <input type="date">
@@ -212,19 +212,19 @@
     </section>
 
     <section>
-        <h2>C'est quoi ?</h2>
+        <h2>What is it ?</h2>
 
         <p class="fragment" data-fragment-index="1">
-            L'ENCAPSULATION
+            It's all about Encapsulation
             <img src="img/aquarium-03.png">
         </p>
     </section>
 
     <section>
-        <h2>L'ENCAPSULATION</h2>
+        <h2>What does this mean</h2>
         <ul>
-            <li class="fragment" data-fragment-index="1">Conteneur isolé</li>
-            <li class="fragment" data-fragment-index="2">Nouveau type de noeud</li>
+            <li class="fragment" data-fragment-index="1">Isolated container</li>
+            <li class="fragment" data-fragment-index="2">New kind of node</li>
             <li class="fragment" data-fragment-index="3">shadow root</li>
             <li class="fragment" data-fragment-index="4">shadow host</li>
         </ul>
@@ -232,19 +232,19 @@
 
 
     <section>
-        <h2>En Javascript</h2>
+        <h2>With Javascript</h2>
         <ul>
             <li class="fragment" data-fragment-index="1">createShadowRoot</li>
             <li class="fragment" data-fragment-index="2">element.shadowRoot</li>
         </ul>
         <pre class="fragment fade-in"><code data-trim>
-<button>Normal button!</button>
-<button id="myBtn">Hello, world!</button>
-<script>
-    var host = document.querySelector('#myBtn');
-    var root = host.createShadowRoot();
-    root.textContent = 'こんにちは、影の世界!';
-</script>
+            <button>Normal button!</button>
+            <button id="myBtn">Hello, world!</button>
+            <script>
+                var host = document.querySelector('#myBtn');
+                var root = host.createShadowRoot();
+                root.textContent = 'こんにちは、影の世界!';
+            </script>
         </code></pre>
         <div class="fragment fade-in">
             <button>Normal button!</button>
@@ -267,32 +267,32 @@
             </code>
         </pre>
         <ul>
-            <li class="fragment" data-fragment-index="1">sous-arbre visible (childNodes, children, innerHTML ...)</li>
-            <li class="fragment" data-fragment-index="2">noeud <strong>interne</strong></li>
-            <li class="fragment" data-fragment-index="3">composed DOM: ce que le navigateur voit et rend</strong></li>
+            <li class="fragment" data-fragment-index="1">visible sub-tree (childNodes, children, innerHTML ...)</li>
+            <li class="fragment" data-fragment-index="2"><strong>internal</strong> node</li>
+            <li class="fragment" data-fragment-index="3">composed DOM: what the browser see and render</strong></li>
         </ul>
     </section>
 
     <section>
-        <h2>Points d'insertions</h2>
+        <h2>Insertions points</h2>
 
-        <p>le content ...</p>
+        <p>the content ...</p>
         <ul>
-            <li class="fragment" data-fragment-index="1">Définir des zones de render dans le shadow Dom</li>
-            <li class="fragment" data-fragment-index="2">Pas de lien logique</li>
+            <li class="fragment" data-fragment-index="1">Define render area in the shadow dom</li>
+            <li class="fragment" data-fragment-index="2">No logical link</li>
         </ul>
                         <pre class="fragment fade-in">
                             <code data-trim>
-<div id="host">
-    <span class="title">Hello too</span>
-    <span>Bla Bla Bla</span>
-</div>
-<script>
-    var shadow = document.querySelector('#host').createShadowRoot();
-    shadow.innerHTML = '<h1>In Shadow</h1>' +
-            '<h2><content select=".title"></content></h2>' +
-            '<section><content select="*"></content></section>';
-</script>
+                                <div id="host">
+                                    <span class="title">Hello too</span>
+                                    <span>Bla Bla Bla</span>
+                                </div>
+                                <script>
+                                    var shadow = document.querySelector('#host').createShadowRoot();
+                                    shadow.innerHTML = '<h1>In Shadow</h1>' +
+                                            '<h2><content select=".title"></content></h2>' +
+                                            '<section><content select="*"></content></section>';
+                                </script>
                             </code>
                         </pre>
         <div id="shadowHost" class="fragment fade-in aside">
@@ -315,54 +315,54 @@
     </section>
 
     <section>
-        <h2>C'est quoi ?</h2>
+        <h2>What is it ?</h2>
 
-        <p>Des modèles de DOM réutilisables</p>
+        <p>Reusable DOM template</p>
     </section>
 
     <section>
-        <h2>Pas dans le document</h2>
+        <h2>Not in the document</h2>
 
-        <p>Pas d’effet de bord:</p>
+        <p>No side effect</p>
         <ul>
-            <li class="fragment" data-fragment-index="1">DOM non rendu</li>
-            <li class="fragment" data-fragment-index="2">script non interprété</li>
-            <li class="fragment" data-fragment-index="3">image non chargée</li>
+            <li class="fragment" data-fragment-index="1">DOM not rendered</li>
+            <li class="fragment" data-fragment-index="2">Script not parsed</li>
+            <li class="fragment" data-fragment-index="3">Image not loaded</li>
         </ul>
     </section>
 
     <section>
-        <h2>Utilisation</h2>
+        <h2>Usage</h2>
         <ol>
-            <li class="fragment" data-fragment-index="1">Récupération par sélecteur</li>
-            <li class="fragment" data-fragment-index="2">accès au contenu: content </li>
-            <li class="fragment" data-fragment-index="3">clone: devient vivant</li>
-            <li class="fragment" data-fragment-index="4">insertion du clone</li>
+            <li class="fragment" data-fragment-index="1">Get the template with a selector</li>
+            <li class="fragment" data-fragment-index="2">acces to the content with the <strong>content</strong> property</li>
+            <li class="fragment" data-fragment-index="3">clone: he's alive</li>
+            <li class="fragment" data-fragment-index="4">insert the clone element in the page</li>
         </ol>
     </section>
 
     <section>
         <h2>Exemple</h2>
         <pre class="fragment fade-in"><code>
-<template id="mytemplate">
-    <img src="" alt="great image">
-    <div id="comment"></div>
-</template>
-<script>
-    var t = document.querySelector('#mytemplate');
-    // Populate the src at runtime.
-    t.content.querySelector('img').src = 'img/templates_64x64.png';
-    t.content.querySelector('#comment').innerHTML = 'My new comment';
-
-    var clone = document.importNode(t.content, true);
-    document.body.appendChild(clone);
-</script>
-        </code></pre>
-            <template id="mytemplate1">
+            <template id="mytemplate">
                 <img src="" alt="great image">
                 <div id="comment"></div>
             </template>
-            <div id="forTemplate1" class="fragment fade-in"></div>
+            <script>
+                var t = document.querySelector('#mytemplate');
+                // Populate the src at runtime.
+                t.content.querySelector('img').src = 'img/templates_64x64.png';
+                t.content.querySelector('#comment').innerHTML = 'My new comment';
+
+                var clone = document.importNode(t.content, true);
+                document.body.appendChild(clone);
+            </script>
+        </code></pre>
+        <template id="mytemplate1">
+            <img src="" alt="great image">
+            <div id="comment"></div>
+        </template>
+        <div id="forTemplate1" class="fragment fade-in"></div>
     </section>
 
     <section>
@@ -379,51 +379,51 @@
     </section>
 
     <section>
-        <h2>C'est quoi ?</h2>
+        <h2>What is it ?</h2>
 
         <ul>
-            <li class="fragment" data-fragment-index="1">Définir de nouveaux types d’élément HTML</li>
-            <li class="fragment" data-fragment-index="2">Étendre des éléments existants</li>
-            <li class="fragment" data-fragment-index="3">Regrouper au sein d'une "balise" une fonctionnalité</li>
+            <li class="fragment" data-fragment-index="1">Define new HTML element</li>
+            <li class="fragment" data-fragment-index="2">Extend existing elements</li>
+            <li class="fragment" data-fragment-index="3">Add a functionality in a new tag</li>
         </ul>
     </section>
 
     <section>
-        <h2>Comment ?</h2>
+        <h2>How ?</h2>
         <ul>
             <li class="fragment" data-fragment-index="1">registerElement</li>
-            <li class="fragment" data-fragment-index="2">un nom (avec un -)</li>
-            <li class="fragment" data-fragment-index="3">un proto (HTMLElement par defaut)</li>
+            <li class="fragment" data-fragment-index="2">a name (with a -)</li>
+            <li class="fragment" data-fragment-index="3">a prototype (HTMLElement by default)</li>
         </ul>
-        <pre class="fragment fade-in">
-        <code data-trim>
-<script>
-    var myElt = document.registerElement('my-elt',HTMLElement.prototype);
-</script>
-
-<my-elt></my-elt>
-        </code>
-        </pre>
-    </section>
-
-    <section>
-        <h2>étendre des éléments existants</h2>
         <pre class="fragment fade-in">
         <code data-trim>
             <script>
-var myButton = document.registerElement('my-button', {
-    prototype: Object.create(HTMLButtonElement.prototype),
-    extends: 'button'
-});
-</script>
+                var myElt = document.registerElement('my-elt',HTMLElement.prototype);
+            </script>
 
-<button is=”my-button”></button>
+            <my-elt></my-elt>
         </code>
         </pre>
     </section>
 
     <section>
-        <h2>Attention aux balises</h2>
+        <h2>Extend existing elements</h2>
+        <pre class="fragment fade-in">
+        <code data-trim>
+            <script>
+                var myButton = document.registerElement('my-button', {
+                    prototype: Object.create(HTMLButtonElement.prototype),
+                    extends: 'button'
+                });
+            </script>
+
+            <button is=”my-button”></button>
+        </code>
+        </pre>
+    </section>
+
+    <section>
+        <h2>Beware tags</h2>
         <p><pre><code><tabs></code></pre></p>
         <p class="fragment" data-fragment-index="1">HTMLUnknownElement</p>
         <p><pre><code><my-tabs></code></pre></p>
@@ -431,22 +431,22 @@ var myButton = document.registerElement('my-button', {
     </section>
 
     <section>
-        <h2>Cycle de vie</h2>
-        <p>Déclaration vs enregistrement
+        <h2>Lifecycle</h2>
+        <p>Declaration vs register
 
-            <ul>
-                <li class="fragment" data-fragment-index="1">considéré comme <strong>unresolved</strong></p></li>
-                <li class="fragment" data-fragment-index="2">pseudo-selector :unresolved</li>
-            </ul>
+        <ul>
+            <li class="fragment" data-fragment-index="1">Seen as <strong>unresolved</strong></p></li>
+        <li class="fragment" data-fragment-index="2">pseudo-selector :unresolved</li>
+        </ul>
         <pre class="fragment fade-in">
             <code>
-<style>
-    *:unresolved {
-        color: red;
-    }
-</style>
-<my-element>register</my-element>
-<button onclick="document.registerElement('my-element')">Register</button>
+                <style>
+                    *:unresolved {
+                        color: red;
+                    }
+                </style>
+                <my-element>register</my-element>
+                <button onclick="document.registerElement('my-element')">Register</button>
             </code>
         </pre>
 
@@ -468,25 +468,25 @@ var myButton = document.registerElement('my-button', {
         </ul>
         <pre class="fragment fade-in">
             <code>
-var myElemtProto = Object.create(HTMLElement.prototype);
+                var myElemtProto = Object.create(HTMLElement.prototype);
 
-myElemtProto.createdCallback = function() {};
+                myElemtProto.createdCallback = function() {};
 
-var myElemt = document.registerElement('my-element', myElemtProto);
+                var myElemt = document.registerElement('my-element', myElemtProto);
             </code>
         </pre>
     </section>
     <section>
-        <h2>Ajouter du contenu</h2>
+        <h2>Add content</h2>
         <img src="img/html.jpg" alt="template logo">
     </section>
     <section>
         <h2>innerHTML</h2>
         <pre class="fragment fade-in">
             <code>
-myEltProto.createdCallback = function() {
-    this.innerHTML = "<b>un peu de contenu!</b>";
-};
+                myEltProto.createdCallback = function() {
+                this.innerHTML = "<b>un peu de contenu!</b>";
+                };
             </code>
         </pre>
     </section>
@@ -494,10 +494,10 @@ myEltProto.createdCallback = function() {
         <h2>shadowDom</h2>
         <pre class="fragment fade-in">
             <code>
-myEltProto.createdCallback = function() {
-    var shadow = this.createShadowRoot();
-    shadow.innerHTML = "<b>un peu de contenu!</b>";
-};
+                myEltProto.createdCallback = function() {
+                var shadow = this.createShadowRoot();
+                shadow.innerHTML = "<b>un peu de contenu!</b>";
+                };
             </code>
         </pre>
     </section>
@@ -505,28 +505,28 @@ myEltProto.createdCallback = function() {
         <h2>Template</h2>
         <pre class="fragment fade-in">
             <code>
-<template id="sdtemplate">
+                <template id="sdtemplate">
 
-</template>
+                </template>
 
-myEltProto.createdCallback = function() {
-    var t = document.querySelector('#sdtemplate');
-    var clone = document.importNode(t.content, true);
-    this.createShadowRoot().appendChild(clone);
-};
+                myEltProto.createdCallback = function() {
+                var t = document.querySelector('#sdtemplate');
+                var clone = document.importNode(t.content, true);
+                this.createShadowRoot().appendChild(clone);
+                };
             </code>
         </pre>
     </section>
     <section>
-        <h2>Ajouter du code</h2>
+        <h2>Add code</h2>
         <img class="noBorder" src="img/js.jpg">
     </section>
     <section>
-        <h2>Le prototype</h2>
+        <h2>The prototype</h2>
         <pre class="fragment fade-in">
             <code>
-myEltProto.myFctn=function(){...}
-Object.defineProperty(myEltProto, "bar", {value: 5});
+                myEltProto.myFctn=function(){...}
+                Object.defineProperty(myEltProto, "bar", {value: 5});
             </code>
         </pre>
     </section>
@@ -545,12 +545,12 @@ Object.defineProperty(myEltProto, "bar", {value: 5});
     <section>
         <h2>Custom element</h2>
 
-        <p>Peuvent être séléctionnés</p>
+        <p>You can use CSS selectors</p>
         <pre class="fragment fade-in">
             <code>
-my-element{
-    color:green;
-}
+                my-element{
+                color:green;
+                }
             </code>
         </pre>
     </section>
@@ -559,23 +559,23 @@ my-element{
 
         <p class="fragment" data-fragment-index="1">Flash Of Unstyled Content</p>
         <ul>
-            <li class="fragment" data-fragment-index="2">élément affiché avant qu’il soit enregistré</li>
+            <li class="fragment" data-fragment-index="2">Element display before they are registered</li>
             <li class="fragment" data-fragment-index="3">:unresolved</li>
         </ul>
     </section>
     <section>
-        <h2>Style du light dom</h2>
+        <h2>Styling light dom</h2>
         <ul>
             <li class="fragment" data-fragment-index="1">in and out</li>
             <li class="fragment" data-fragment-index="2">::content</li>
         </ul>
         <pre class="fragment fade-in"><code>
-#elemt span{
-     color:limegreen;
-}
+            #elemt span{
+            color:limegreen;
+            }
 
-<div id="elemt"">
-    <span>Hello</span>
+            <div id="elemt"">
+            <span>Hello</span>
 </div>
 
 Shadow dom:
@@ -585,82 +585,82 @@ Shadow dom:
 <h3>Shadow DOM</h3>
 <content></content>
 
-        </code></pre>
-        <div id="elemt1" class="fragment fade-in aside">
-            <span>Hello</span>
-        </div>
-        <script>
-            var elmt=document.querySelector('#elemt1');
-            var root = elmt.createShadowRoot();
-            root.innerHTML = '<style>::content span{text-decoration: underline;}</style>\
+</code></pre>
+<div id="elemt1" class="fragment fade-in aside">
+    <span>Hello</span>
+</div>
+<script>
+    var elmt=document.querySelector('#elemt1');
+    var root = elmt.createShadowRoot();
+    root.innerHTML = '<style>::content span{text-decoration: underline;}</style>\
     <h3>Shadow DOM</h3>\
     <content></content>';
-        </script>
-    </section>
-    <section>
-        <h2>Dans le shadow dom</h2>
-
-        <p>Des sélecteurs</p>
-        <ul>
-            <li class="fragment" data-fragment-index="1">:host</li>
-            <li class="fragment" data-fragment-index="2">:host(selector)</li>
-            <li class="fragment" data-fragment-index="3">:host(pseudo-class)</li>
-            <li class="fragment" data-fragment-index="4">:host-context(selector)</li>
-        </ul>
-        <pre class="fragment fade-in"><code>
-<button>My Button</button>
-<style>
-    :host {
-        opacity: 0.4;
-        transition: opacity 420ms ease-in-out;
-    }
-    :host(.red) {
-        color:red;
-    }
-    :host(:hover) {
-        opacity: 1;
-    }
-</style>
-</code></pre>
-        <div class="fragment faded-in aside">
-            <button id="hostButton" class="red">My Button</button>
-        </div>
-    </section>
-    <section>
-        <h2>En dehors du shadow dom</h2>
-
-        <ul>
-            <li class="fragment" data-fragment-index="1">::shadow</li>
-            <li class="fragment" data-fragment-index="2">/deep/</li>
-        </ul>
-        <pre class="fragment fade-in"><code>
-<style>
-    #host::shadow span {
-        color: red;
-    }
-</style>
-
-<div id="host"></div>
-
-<script>
-    var host = document.querySelector('#hostDiv');
-    var root = host.createShadowRoot();
-    root.innerHTML = "<span>Shadow DOM</span>";
 </script>
+</section>
+<section>
+    <h2>Inside shadow dom</h2>
+
+    <p>Selectors</p>
+    <ul>
+        <li class="fragment" data-fragment-index="1">:host</li>
+        <li class="fragment" data-fragment-index="2">:host(selector)</li>
+        <li class="fragment" data-fragment-index="3">:host(pseudo-class)</li>
+        <li class="fragment" data-fragment-index="4">:host-context(selector)</li>
+    </ul>
+        <pre class="fragment fade-in"><code>
+            <button>My Button</button>
+            <style>
+                :host {
+                    opacity: 0.4;
+                    transition: opacity 420ms ease-in-out;
+                }
+                :host(.red) {
+                    color:red;
+                }
+                :host(:hover) {
+                    opacity: 1;
+                }
+            </style>
         </code></pre>
-        <div class="fragment fade-in" id="hostDiv"></div>
-    </section>
+    <div class="fragment faded-in aside">
+        <button id="hostButton" class="red">My Button</button>
+    </div>
+</section>
+<section>
+    <h2>Outside shadow dom</h2>
+
+    <ul>
+        <li class="fragment" data-fragment-index="1">::shadow</li>
+        <li class="fragment" data-fragment-index="2">/deep/</li>
+    </ul>
+        <pre class="fragment fade-in"><code>
+            <style>
+                #host::shadow span {
+                    color: red;
+                }
+            </style>
+
+            <div id="host"></div>
+
+            <script>
+                var host = document.querySelector('#hostDiv');
+                var root = host.createShadowRoot();
+                root.innerHTML = "<span>Shadow DOM</span>";
+            </script>
+        </code></pre>
+    <div class="fragment fade-in" id="hostDiv"></div>
+</section>
 </section>
 <section>
     <section>
-        <h2>Bref</h2>
+        <h2>So</h2>
         <img class="noBorder" src="img/bref.jpg" alt="import current status">
     </section>
     <section>
-        <h2>Des spécifications prometteuses </h2>
-        <p class="fragment" data-fragment-index="1">utilisables indépendamment</p>
-        <p class="fragment" data-fragment-index="2">MAIS .. UN SUPPORT TROP FAIBLE</p>
-        <p class="fragment" data-fragment-index="3">Alors que fait on ?</p>
+        <h2>Real good specification</h2>
+        <p class="fragment" data-fragment-index="1">Can bu used alone</p>
+        <p class="fragment" data-fragment-index="2">But a weak suppor</p>
+        <p class="fragment" data-fragment-index="3">So what can we do ?</p>
     </section>
     <section>
         <h2>POLYMER</h2>
@@ -702,7 +702,7 @@ Shadow dom:
 
 
 <section>
-    <h1>Merci !!!</h1>
+    <h1>Thank you !!!</h1>
 
     <h3>Cyril Balit</h3>
     <a href="https://twitter.com/cbalit" class="twt">cbalit</a>
