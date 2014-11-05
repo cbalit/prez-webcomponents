@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- For syntax highlighting -->
@@ -75,7 +75,7 @@
     <img class="noBorder" width="512" height="512" src="img/logo_512x512.png" alt="webcomponents logo">
 
     <p>
-        <small><a href="https://twitter.com/cbalit">@cbalit</a></small>
+        <small><a href="https://twitter.com/cbalit" class="devoxx">@cbalit</a></small>
     </p>
 </section>
 
@@ -273,8 +273,6 @@
 
     <section>
         <h2>Insertions points</h2>
-
-        <p>the content ...</p>
         <ul>
             <li class="fragment" data-fragment-index="1">Define render area in the shadow dom</li>
             <li class="fragment" data-fragment-index="2">No logical link</li>
@@ -535,120 +533,6 @@ Object.defineProperty(myEltProto, "bar", {value: 5});
     </section>
 </section>
 
-<section>
-    <section>
-        <h2>Styling custom elements</h2>
-        <img class="noBorder" src="img/css.png" alt="import current status">
-    </section>
-    <section>
-        <h2>Custom element</h2>
-
-        <p>You can use CSS selectors</p>
-        <pre class="fragment fade-in">
-<code>
-    my-element{
-    color:green;
-    }
-</code>
-        </pre>
-    </section>
-    <section>
-        <h2>FOUC</h2>
-
-        <p class="fragment" data-fragment-index="1">Flash Of Unstyled Content</p>
-        <ul>
-            <li class="fragment" data-fragment-index="2">Element display before they are registered</li>
-            <li class="fragment" data-fragment-index="3">:unresolved</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Styling light dom</h2>
-        <ul>
-            <li class="fragment" data-fragment-index="1">in and out</li>
-            <li class="fragment" data-fragment-index="2">::content</li>
-        </ul>
-        <pre class="fragment fade-in"><code>
-#elemt span{
-color:limegreen;
-}
-
-<div id="elemt"">
-<span>Hello</span>
-</div>
-
-Shadow dom:
-<style>
-::content span{text-decoration: underline;}
-</style>
-<h3>Shadow DOM</h3>
-<content></content>
-
-</code></pre>
-<div id="elemt1" class="fragment fade-in aside">
-    <span>Hello</span>
-</div>
-<script>
-    var elmt=document.querySelector('#elemt1');
-    var root = elmt.createShadowRoot();
-    root.innerHTML = '<style>::content span{text-decoration: underline;}</style>\
-    <h3>Shadow DOM</h3>\
-    <content></content>';
-</script>
-</section>
-<section>
-    <h2>Inside shadow dom</h2>
-
-    <p>Selectors</p>
-    <ul>
-        <li class="fragment" data-fragment-index="1">:host</li>
-        <li class="fragment" data-fragment-index="2">:host(selector)</li>
-        <li class="fragment" data-fragment-index="3">:host(pseudo-class)</li>
-        <li class="fragment" data-fragment-index="4">:host-context(selector)</li>
-    </ul>
-        <pre class="fragment fade-in"><code>
-<button>My Button</button>
-<style>
-    :host {
-        opacity: 0.4;
-        transition: opacity 420ms ease-in-out;
-    }
-    :host(.red) {
-        color:red;
-    }
-    :host(:hover) {
-        opacity: 1;
-    }
-</style>
-        </code></pre>
-    <div class="fragment faded-in aside">
-        <button id="hostButton" class="red">My Button</button>
-    </div>
-</section>
-<section>
-    <h2>Outside shadow dom</h2>
-
-    <ul>
-        <li class="fragment" data-fragment-index="1">::shadow</li>
-        <li class="fragment" data-fragment-index="2">/deep/</li>
-    </ul>
-        <pre class="fragment fade-in"><code>
-<style>
-    #host::shadow span {
-        color: red;
-    }
-</style>
-
-<div id="host"></div>
-
-<script>
-    var host = document.querySelector('#hostDiv');
-    var root = host.createShadowRoot();
-    root.innerHTML = "<span>Shadow DOM</span>";
-</script>
-        </code></pre>
-    <div class="fragment fade-in" id="hostDiv"></div>
-</section>
-</section>
 <section>
     <section>
         <h2>So</h2>

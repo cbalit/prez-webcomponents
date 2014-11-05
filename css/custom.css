@@ -22,6 +22,14 @@ section .twt{
     height: 50px;
     display: inline-block;
 }
+section .devoxx{
+    background:url('../img/devoxx_logo.gif')  0 0 no-repeat;
+    background-size: 183px 25px;
+    padding-left: 183px;
+    line-height: 25px;
+    height: 25px;
+    display: inline-block;
+}
 
 .reveal pre{
     box-shadow: none;
