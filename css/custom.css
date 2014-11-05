@@ -22,3 +22,20 @@ section .twt{
     height: 50px;
     display: inline-block;
 }
+
+.reveal pre{
+    box-shadow: none;
+}
+
+.reveal {
+    font-family: "Open Sans", "Lato", sans-serif;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    font-family: "Open Sans", "News Cycle", Impact, sans-serif;
+}

@@ -135,17 +135,17 @@
             HTML and CSS are just loaded but not included (available)
             We retrieve the content using the  <strong>import</strong> property
         </p>
-                         <pre class="fragment fade-in"><code data-trim>
-                             <link id="my-import"rel="import" href="myfile.html">
-                             <script>
-                                 var content = document.querySelector('#my-import');
-                                 var content = link.import;
-                                 //I can now acces to my content
-                                 var el = content.querySelector('.mySelector');
+ <pre class="fragment fade-in"><code data-trim>
+<link id="my-import"rel="import" href="myfile.html">
+<script>
+ var content = document.querySelector('#my-import');
+ var content = link.import;
+ //I can now acces to my content
+ var el = content.querySelector('.mySelector');
 
-                                 document.body.appendChild(el.cloneNode(true));
-                             </script>
-                         </code></pre>
+ document.body.appendChild(el.cloneNode(true));
+</script>
+ </code></pre>
     </section>
 
     <section>
@@ -156,10 +156,10 @@
             <li class="fragment" data-fragment-index="4">... and the one from the page</li>
         </ul>
                          <pre class="fragment fade-in"><code data-trim>
-                             <script>
-                                 var importDoc = document.currentScript.ownerDocument;
-                                 var mainDoc = document;
-                             </script>
+ <script>
+     var importDoc = document.currentScript.ownerDocument;
+     var mainDoc = document;
+ </script>
                          </code></pre>
     </section>
 
@@ -170,18 +170,16 @@
             Load and Error Event
         </p>
                          <pre class="fragment fade-in"><code data-trim>
-                             <script async>
-                                 function handleLoad(e) {
-                                     console.log('Loaded import: ' + e.target.href);
-                                 }
-                                 function handleError(e) {
-                                     console.log('Error loading import: ' + e.target.href);
-                                 }
-                             </script>
+ <script async>
+     function handleLoad(e) {
+         console.log('Loaded import: ' + e.target.href);
+     }
+     function handleError(e) {
+         console.log('Error loading import: ' + e.target.href);
+     }
+ </script>
 
-                             <link rel="import" href="file.html"
-                                   onload="handleLoad(event)" onerror="handleError(event)">
-
+ <link rel="import" href="file.html" onload="handleLoad(event)" onerror="handleError(event)">
                          </code></pre>
     </section>
 
@@ -202,9 +200,9 @@
 
         <p>Browsers already use it</p>
                         <pre><code data-trim>
-                            <input type="range">
-                            <input type="date">
-                            <input type="hour">
+<input type="range">
+<input type="date">
+<input type="hour">
                         </code></pre>
         <input type="range">
         <input type="date">
@@ -238,13 +236,13 @@
             <li class="fragment" data-fragment-index="2">element.shadowRoot</li>
         </ul>
         <pre class="fragment fade-in"><code data-trim>
-            <button>Normal button!</button>
-            <button id="myBtn">Hello, world!</button>
-            <script>
-                var host = document.querySelector('#myBtn');
-                var root = host.createShadowRoot();
-                root.textContent = 'こんにちは、影の世界!';
-            </script>
+<button>Normal button!</button>
+<button id="myBtn">Hello, world!</button>
+<script>
+    var host = document.querySelector('#myBtn');
+    var root = host.createShadowRoot();
+    root.textContent = 'こんにちは、影の世界!';
+</script>
         </code></pre>
         <div class="fragment fade-in">
             <button>Normal button!</button>
@@ -261,9 +259,9 @@
         <h2>Shadow DOM versus Light DOM</h2>
         <pre>
             <code>
-                <my-element>
-                    <span>Hello</span>
-                </my-element>
+<my-element>
+    <span>Hello</span>
+</my-element>
             </code>
         </pre>
         <ul>
@@ -283,16 +281,16 @@
         </ul>
                         <pre class="fragment fade-in">
                             <code data-trim>
-                                <div id="host">
-                                    <span class="title">Hello too</span>
-                                    <span>Bla Bla Bla</span>
-                                </div>
-                                <script>
-                                    var shadow = document.querySelector('#host').createShadowRoot();
-                                    shadow.innerHTML = '<h1>In Shadow</h1>' +
-                                            '<h2><content select=".title"></content></h2>' +
-                                            '<section><content select="*"></content></section>';
-                                </script>
+<div id="host">
+    <span class="title">Hello too</span>
+    <span>Bla Bla Bla</span>
+</div>
+<script>
+    var shadow = document.querySelector('#host').createShadowRoot();
+    shadow.innerHTML = '<h1>In Shadow</h1>' +
+            '<h2><content select=".title"></content></h2>' +
+            '<section><content select="*"></content></section>';
+</script>
                             </code>
                         </pre>
         <div id="shadowHost" class="fragment fade-in aside">
@@ -344,19 +342,19 @@
     <section>
         <h2>Exemple</h2>
         <pre class="fragment fade-in"><code>
-            <template id="mytemplate">
-                <img src="" alt="great image">
-                <div id="comment"></div>
-            </template>
-            <script>
-                var t = document.querySelector('#mytemplate');
-                // Populate the src at runtime.
-                t.content.querySelector('img').src = 'img/templates_64x64.png';
-                t.content.querySelector('#comment').innerHTML = 'My new comment';
+<template id="mytemplate">
+    <img src="" alt="great image">
+    <div id="comment"></div>
+</template>
+<script>
+    var t = document.querySelector('#mytemplate');
+    // Populate the src at runtime.
+    t.content.querySelector('img').src = 'img/templates_64x64.png';
+    t.content.querySelector('#comment').innerHTML = 'My new comment';
 
-                var clone = document.importNode(t.content, true);
-                document.body.appendChild(clone);
-            </script>
+    var clone = document.importNode(t.content, true);
+    document.body.appendChild(clone);
+</script>
         </code></pre>
         <template id="mytemplate1">
             <img src="" alt="great image">
@@ -397,11 +395,11 @@
         </ul>
         <pre class="fragment fade-in">
         <code data-trim>
-            <script>
-                var myElt = document.registerElement('my-elt',HTMLElement.prototype);
-            </script>
+<script>
+    var myElt = document.registerElement('my-elt',HTMLElement.prototype);
+</script>
 
-            <my-elt></my-elt>
+<my-elt></my-elt>
         </code>
         </pre>
     </section>
@@ -410,14 +408,14 @@
         <h2>Extend existing elements</h2>
         <pre class="fragment fade-in">
         <code data-trim>
-            <script>
-                var myButton = document.registerElement('my-button', {
-                    prototype: Object.create(HTMLButtonElement.prototype),
-                    extends: 'button'
-                });
-            </script>
+<script>
+    var myButton = document.registerElement('my-button', {
+        prototype: Object.create(HTMLButtonElement.prototype),
+        extends: 'button'
+    });
+</script>
 
-            <button is=”my-button”></button>
+<button is=”my-button”></button>
         </code>
         </pre>
     </section>
@@ -440,13 +438,13 @@
         </ul>
         <pre class="fragment fade-in">
             <code>
-                <style>
-                    *:unresolved {
-                        color: red;
-                    }
-                </style>
-                <my-element>register</my-element>
-                <button onclick="document.registerElement('my-element')">Register</button>
+<style>
+    *:unresolved {
+        color: red;
+    }
+</style>
+<my-element>register</my-element>
+<button onclick="document.registerElement('my-element')">Register</button>
             </code>
         </pre>
 
@@ -468,11 +466,11 @@
         </ul>
         <pre class="fragment fade-in">
             <code>
-                var myElemtProto = Object.create(HTMLElement.prototype);
+var myElemtProto = Object.create(HTMLElement.prototype);
 
-                myElemtProto.createdCallback = function() {};
+myElemtProto.createdCallback = function() {};
 
-                var myElemt = document.registerElement('my-element', myElemtProto);
+var myElemt = document.registerElement('my-element', myElemtProto);
             </code>
         </pre>
     </section>
@@ -484,9 +482,9 @@
         <h2>innerHTML</h2>
         <pre class="fragment fade-in">
             <code>
-                myEltProto.createdCallback = function() {
-                this.innerHTML = "<b>un peu de contenu!</b>";
-                };
+myEltProto.createdCallback = function() {
+this.innerHTML = "<b>un peu de contenu!</b>";
+};
             </code>
         </pre>
     </section>
@@ -494,10 +492,10 @@
         <h2>shadowDom</h2>
         <pre class="fragment fade-in">
             <code>
-                myEltProto.createdCallback = function() {
-                var shadow = this.createShadowRoot();
-                shadow.innerHTML = "<b>un peu de contenu!</b>";
-                };
+myEltProto.createdCallback = function() {
+var shadow = this.createShadowRoot();
+shadow.innerHTML = "<b>un peu de contenu!</b>";
+};
             </code>
         </pre>
     </section>
@@ -505,15 +503,15 @@
         <h2>Template</h2>
         <pre class="fragment fade-in">
             <code>
-                <template id="sdtemplate">
+<template id="sdtemplate">
 
-                </template>
+</template>
 
-                myEltProto.createdCallback = function() {
-                var t = document.querySelector('#sdtemplate');
-                var clone = document.importNode(t.content, true);
-                this.createShadowRoot().appendChild(clone);
-                };
+myEltProto.createdCallback = function() {
+var t = document.querySelector('#sdtemplate');
+var clone = document.importNode(t.content, true);
+this.createShadowRoot().appendChild(clone);
+};
             </code>
         </pre>
     </section>
@@ -524,10 +522,10 @@
     <section>
         <h2>The prototype</h2>
         <pre class="fragment fade-in">
-            <code>
-                myEltProto.myFctn=function(){...}
-                Object.defineProperty(myEltProto, "bar", {value: 5});
-            </code>
+<code>
+myEltProto.myFctn=function(){...}
+Object.defineProperty(myEltProto, "bar", {value: 5});
+</code>
         </pre>
     </section>
 
@@ -547,11 +545,11 @@
 
         <p>You can use CSS selectors</p>
         <pre class="fragment fade-in">
-            <code>
-                my-element{
-                color:green;
-                }
-            </code>
+<code>
+    my-element{
+    color:green;
+    }
+</code>
         </pre>
     </section>
     <section>
@@ -570,17 +568,17 @@
             <li class="fragment" data-fragment-index="2">::content</li>
         </ul>
         <pre class="fragment fade-in"><code>
-            #elemt span{
-            color:limegreen;
-            }
+#elemt span{
+color:limegreen;
+}
 
-            <div id="elemt"">
-            <span>Hello</span>
+<div id="elemt"">
+<span>Hello</span>
 </div>
 
 Shadow dom:
 <style>
-    ::content span{text-decoration: underline;}
+::content span{text-decoration: underline;}
 </style>
 <h3>Shadow DOM</h3>
 <content></content>
@@ -608,19 +606,19 @@ Shadow dom:
         <li class="fragment" data-fragment-index="4">:host-context(selector)</li>
     </ul>
         <pre class="fragment fade-in"><code>
-            <button>My Button</button>
-            <style>
-                :host {
-                    opacity: 0.4;
-                    transition: opacity 420ms ease-in-out;
-                }
-                :host(.red) {
-                    color:red;
-                }
-                :host(:hover) {
-                    opacity: 1;
-                }
-            </style>
+<button>My Button</button>
+<style>
+    :host {
+        opacity: 0.4;
+        transition: opacity 420ms ease-in-out;
+    }
+    :host(.red) {
+        color:red;
+    }
+    :host(:hover) {
+        opacity: 1;
+    }
+</style>
         </code></pre>
     <div class="fragment faded-in aside">
         <button id="hostButton" class="red">My Button</button>
@@ -634,19 +632,19 @@ Shadow dom:
         <li class="fragment" data-fragment-index="2">/deep/</li>
     </ul>
         <pre class="fragment fade-in"><code>
-            <style>
-                #host::shadow span {
-                    color: red;
-                }
-            </style>
+<style>
+    #host::shadow span {
+        color: red;
+    }
+</style>
 
-            <div id="host"></div>
+<div id="host"></div>
 
-            <script>
-                var host = document.querySelector('#hostDiv');
-                var root = host.createShadowRoot();
-                root.innerHTML = "<span>Shadow DOM</span>";
-            </script>
+<script>
+    var host = document.querySelector('#hostDiv');
+    var root = host.createShadowRoot();
+    root.innerHTML = "<span>Shadow DOM</span>";
+</script>
         </code></pre>
     <div class="fragment fade-in" id="hostDiv"></div>
 </section>
@@ -659,7 +657,7 @@ Shadow dom:
     <section>
         <h2>Real good specification</h2>
         <p class="fragment" data-fragment-index="1">Can bu used alone</p>
-        <p class="fragment" data-fragment-index="2">But a weak suppor</p>
+        <p class="fragment" data-fragment-index="2">But a weak support</p>
         <p class="fragment" data-fragment-index="3">So what can we do ?</p>
     </section>
     <section>
