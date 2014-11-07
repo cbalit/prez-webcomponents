@@ -21,6 +21,7 @@ section .twt{
     line-height: 50px;
     height: 50px;
     display: inline-block;
+    margin: 25px;
 }
 section .devoxx{
     background:url('../img/devoxx_logo.gif')  0 0 no-repeat;
