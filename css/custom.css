@@ -48,3 +48,12 @@ section .devoxx{
 .reveal h6 {
     font-family: "Open Sans", "News Cycle", Impact, sans-serif;
 }
+
+section span.who {
+    background:url('../img/sfeir01.jpg')  0 0 no-repeat;
+    background-size: 72px 25px;
+    width:150px;
+    padding-left: 72px;
+    margin-left: 15px;
+}
+
