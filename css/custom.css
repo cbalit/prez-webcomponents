@@ -51,6 +51,7 @@ section .devoxx{
 
 .reveal section img{
     border: none;
+    box-shadow: none;
 }
 
 section span.who {
