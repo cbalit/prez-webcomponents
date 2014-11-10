@@ -49,6 +49,10 @@ section .devoxx{
     font-family: "Open Sans", "News Cycle", Impact, sans-serif;
 }
 
+.reveal section img{
+    border: none;
+}
+
 section span.who {
     background:url('../img/sfeir01.jpg')  0 0 no-repeat;
     background-size: 72px 25px;
